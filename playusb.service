@@ -1,0 +1,16 @@
+[Unit]
+Description=USB autoplay audio
+After=mnt-usb.mount sound.target
+Requires=mnt-usb.mount
+
+[Service]
+ExecStart=/bin/bash /home/tekniker/playusb.sh
+Restart=on-failure
+RestartSec=5
+User=tekniker
+WorkingDirectory=/home/tekniker
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
